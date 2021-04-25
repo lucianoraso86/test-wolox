@@ -3,6 +3,7 @@ const { Sequelize } = require('sequelize');
 
 // Models 
 const UserModel = require('../models/user.models');
+const CoinUserModel = require('../models/coin_user.model');
 
 // Conexion a base de datos usando ORM
 const sequelize = new Sequelize(
@@ -16,6 +17,7 @@ const sequelize = new Sequelize(
 
 
 const User = UserModel(sequelize, Sequelize);
+const CoinUser = CoinUserModel(sequelize, Sequelize);
 
 // Sincronizo las tablas, si no existe la creo
 sequelize.sync({ force: false })
@@ -23,6 +25,8 @@ sequelize.sync({ force: false })
         console.log("Table creada exitosamente.");
     })
 
+
 module.exports = {
-    User
+    User,
+    CoinUser
 }

@@ -4,17 +4,6 @@ require('./db/db');
 const app = express();
 
 
-
-// connect database
-/*db
-    .authenticate()
-    .then(() => {
-        console.info('Database connected.');
-    })
-    .catch(err => {
-        console.error('Unable to connect to the database:', err);
-    })
-*/
 //set port
 app.set('port', process.env.PORT || config.port);
 
@@ -24,8 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 
 //routers
 app.use('/api/user', require('./router/user.router'));
-app.use('/api/crypto', require('./router/crypto.router'));
-
+app.use('/api/coin', require('./router/coin.router'));
 
 // star the server
 app.listen(app.get('port'), () => {

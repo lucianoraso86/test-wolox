@@ -1,41 +1,46 @@
 const { User } = require('../db/db');
 const bcrypt = require('bcrypt');
 const tokenService = require('../services/token.service')
-const { validateLogin } = require('../services/validator.service');
+const validate = require('../services/validator.service');
 
 const userController = {
 
-    // Crear usuario
+    // Crear usuario ----------------------------------------------------------
     async create(req, res) {
 
         let data = req.body;
-        let validate = validateLogin(data);
-        if (validate.status) {
 
-            data.password = await bcrypt.hash(data.password, 10);
+        // valido datos enviados
+        let checkdata = validate.create(data);
+        if (checkdata.status) {
 
-            const result = await User.create(data);
+            // valido que el usuario no exista
+            const checkUser = await User.findOne({ where: { username: data.username } })
+            if (!checkUser) {
 
-            return res.status(200).json({ 'user': result });
+                // encripto el pass y guardo en la base
+                data.password = await bcrypt.hash(data.password, 10);
+                data.money = data.money.toUpperCase();
+                const result = await User.create(data);
 
+                return res.status(200).json({ 'user': result });
+
+            } else {
+                return res.status(400).json({ 'error': 'username ya existente' });
+            }
         } else {
-            let msg = validate.info;
+            let msg = checkdata.info;
             return res.status(400).json({ 'error': msg });
         }
-
-
     },
 
-    async remove(id) {
-        //.......
-    },
 
-    // login --------------------------
+    // login ------------------------------------------------------------------
     async login(req, res) {
 
         const data = req.body;
 
-        // obtengo usuaro de la base desde su username
+        // obtengo usuario de la base desde su username
         const userData = await User.findOne({
             where: { username: data.username }
         })
@@ -57,7 +62,13 @@ const userController = {
         } else {
             return res.status(403).json({ error: 'Credenciales incorrectas' });
         }
-    }
+    },
+
+    // remove ------------------------------------------------------------------
+    async remove(id) {
+        //.......
+    },
+
 
 }
 
