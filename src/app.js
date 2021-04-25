@@ -17,5 +17,5 @@ app.use('/api/coin', require('./router/coin.router'));
 
 // star the server
 app.listen(app.get('port'), () => {
-    console.log(`server on port ${app.get('port')}`);
+    console.log(`- server on port ${app.get('port')}`);
 })

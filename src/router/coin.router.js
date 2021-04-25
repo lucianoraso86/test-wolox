@@ -3,8 +3,12 @@ const router = Router();
 
 const coinController = require('../controllers/coin.controller');
 
-router.get('/list', async(req, res) => {
-    coinController.list(req, res);
+router.get('/list-all', async(req, res) => {
+    coinController.listAll(req, res);
+});
+
+router.get('/list-user', async(req, res) => {
+    coinController.listUser(req, res);
 });
 
 

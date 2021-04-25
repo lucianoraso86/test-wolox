@@ -22,7 +22,7 @@ const CoinUser = CoinUserModel(sequelize, Sequelize);
 // Sincronizo las tablas, si no existe la creo
 sequelize.sync({ force: false })
     .then(() => {
-        console.log("Table creada exitosamente.");
+        console.log("- db sincronizada exitosamente");
     })
 
 

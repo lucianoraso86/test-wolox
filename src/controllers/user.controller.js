@@ -20,7 +20,7 @@ const userController = {
 
                 // encripto el pass y guardo en la base
                 data.password = await bcrypt.hash(data.password, 10);
-                data.money = data.money.toUpperCase();
+                data.money = data.money.toLowerCase();
                 const result = await User.create(data);
 
                 return res.status(200).json({ 'user': result });

@@ -8,9 +8,10 @@ const token = {
     async create(userData) {
         var token = JWT.sign({
             exp: Math.floor(Date.now() / 1000) + (configJWT.timeExpire * 300),
-            usuario: {
+            user: {
                 id: userData.id,
-                username: userData.username
+                username: userData.username,
+                money: userData.money
             }
         }, configJWT.secret);
         return token;
@@ -21,9 +22,10 @@ const token = {
         try {
             var tokenPayload = await JWT.verify(token, configJWT.secret);
             return {
-                usuario: {
-                    id: tokenPayload.usuario.id,
-                    username: tokenPayload.usuario.username
+                user: {
+                    id: tokenPayload.user.id,
+                    username: tokenPayload.user.username,
+                    money: tokenPayload.user.money,
                 }
             }
         } catch (er) {

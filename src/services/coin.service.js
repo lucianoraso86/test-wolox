@@ -8,34 +8,31 @@ const coinService = {
     url: configApp.coinURL,
 
     // obtiene las crypto, filtra por parametros ------------------------------
-    async getallCoin(money, cant, order) {
+    async getallCoin(money, cant, order, ids) {
 
-        let response = await axios
-            .get(coinService.url + '/coins/markets', {
-                params: {
-                    "vs_currency": money,
-                    "per_page": cant,
-                    "order": order
-                }
-            });
+        let params = { "vs_currency": money };
+        cant != null ? params.per_page = cant : null;
+        order != null ? params.order = "market_cap_" + order : params.order = 'market_cap_desc';
+        ids != null ? params.ids = ids : null;
 
-
+        //console.log(params);
+        let response = await axios.get(coinService.url + '/coins/markets', { params });
         return response.data;
     },
 
-    // obtiene una crypto (valida que exista) ------------------------------
+
+    // obtiene datos de una crypto --------------------------------------------
     async getCoin(id_coin) {
-        try {
-            let response = await axios
-                .get(coinService.url + '/coins/' + id_coin);
 
-            return response.data;
-
-        } catch (err) {
-            return { "error": "no encontrado" }
-        }
-    },
-
+        return new Promise(async function(resolve, reject) {
+            try {
+                let response = await axios.get(coinService.url + '/coins/' + id_coin);
+                resolve(response.data);
+            } catch (err) {
+                reject(err);
+            }
+        });
+    }
 }
 
 
