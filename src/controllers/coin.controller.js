@@ -1,13 +1,9 @@
-const configApp = require('../config/config-app');
 const coinService = require('../services/coin.service');
 const { util } = require('../services/util.service')
 const { CoinUser } = require('../db/db');
 
 
 const coinController = {
-
-    // origen de datos CoinGecko ---------------------------------------------
-    url: configApp.url,
 
     // Metodo para listar -----------------------------------------------------
     async listAll(req, res) {
@@ -125,7 +121,7 @@ const coinController = {
         if (dataCoin.id) {
 
             let coinUserData = {
-                id_user: req.usuario.id,
+                id_user: req.user.id,
                 id_coin: dataCoin.id
             }
 

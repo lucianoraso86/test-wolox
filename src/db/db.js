@@ -1,4 +1,3 @@
-const configDB = require('../config/config-db');
 const { Sequelize } = require('sequelize');
 
 // Models 
@@ -7,10 +6,10 @@ const CoinUserModel = require('../models/coin_user.model');
 
 // Conexion a base de datos usando ORM
 const sequelize = new Sequelize(
-    configDB.name,
-    configDB.username,
-    configDB.password, {
-        host: configDB.host,
+    process.env.DB_NAME,
+    process.env.DB_USERNAME,
+    process.env.DB_PASSWORD, {
+        host: process.env.DB_HOST,
         dialect: 'mysql',
         logging: false
     });

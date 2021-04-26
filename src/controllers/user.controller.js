@@ -1,5 +1,6 @@
 const { User } = require('../db/db');
 const bcrypt = require('bcrypt');
+
 const tokenService = require('../services/token.service')
 const { validate } = require('../services/util.service');
 

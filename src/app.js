@@ -1,5 +1,5 @@
 const express = require('express');
-const config = require('./config/config-app');
+require('dotenv').config();
 
 // inicio conecciona BD
 require('./db/db');
@@ -7,7 +7,7 @@ require('./db/db');
 const app = express();
 
 // set port
-app.set('port', process.env.PORT || config.port);
+app.set('port', process.env.PORT || 3000);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

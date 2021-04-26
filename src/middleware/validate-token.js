@@ -1,4 +1,3 @@
-const configJWT = require('../config/config-jwt');
 const JWT = require('jsonwebtoken');
 
 
@@ -10,7 +9,7 @@ const verifyToken = (req, res, next) => {
     if (!token) return res.status(401).json({ error: 'Acceso denegado' });
 
     try {
-        const verified = JWT.verify(token, configJWT.secret);
+        const verified = JWT.verify(token, process.env.JWT_SECRET);
         req.user = verified.user;
         next();
     } catch (error) {
