@@ -1,8 +1,6 @@
 const configApp = require('../config/config-app');
 const axios = require('axios');
 
-
-
 const coinService = {
 
     url: configApp.coinURL,
@@ -19,7 +17,6 @@ const coinService = {
         let response = await axios.get(coinService.url + '/coins/markets', { params });
         return response.data;
     },
-
 
     // obtiene datos de una crypto --------------------------------------------
     async getCoin(id_coin) {

@@ -1,17 +1,17 @@
 const { User } = require('../db/db');
 const bcrypt = require('bcrypt');
 const tokenService = require('../services/token.service')
-const validate = require('../services/validator.service');
+const { validate } = require('../services/util.service');
 
 const userController = {
 
     // Crear usuario ----------------------------------------------------------
-    async create(req, res) {
+    async add(req, res) {
 
         let data = req.body;
 
         // valido datos enviados
-        let checkdata = validate.create(data);
+        let checkdata = validate.add(data);
         if (checkdata.status) {
 
             // valido que el usuario no exista
@@ -33,7 +33,6 @@ const userController = {
             return res.status(400).json({ 'error': msg });
         }
     },
-
 
     // login ------------------------------------------------------------------
     async login(req, res) {
@@ -63,12 +62,6 @@ const userController = {
             return res.status(403).json({ error: 'Credenciales incorrectas' });
         }
     },
-
-    // remove ------------------------------------------------------------------
-    async remove(id) {
-        //.......
-    },
-
 
 }
 
