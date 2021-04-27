@@ -4,17 +4,22 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "dev": "nodemon src/app.js"
+        "start": "node app.js",
+        "dev": "nodemon app.js",
+        "test": "node_modules/.bin/mocha test/app-test.js"
     },
     "keywords": [],
-    "author": "",
+    "author": "Luciano Raso",
     "license": "ISC",
     "dependencies": {
         "axios": "^0.21.1",
         "bcrypt": "^5.0.1",
+        "chai": "^4.3.4",
+        "chai-http": "^4.3.0",
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
         "jsonwebtoken": "^8.5.1",
+        "mocha": "^8.3.2",
         "mysql2": "^2.2.5",
         "sequelize": "^6.6.2"
     },
