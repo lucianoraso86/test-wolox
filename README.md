@@ -22,25 +22,26 @@ DB_PASSWORD =
 Finalmente para iniciar la API:<br />
 `npm start`
 ```
-Nota: Para iniciar la API en modo desarrollo (ante cambios reinicia el server), debe ejecutar: <br />
-`npm run dev`
+Nota: Para iniciar la API en modo desarrollo (ante cambios reinicia el server), debe ejecutar:
+* npm run dev
 ```
 ___
 ### Endpoints
 Una vez ejecutada, la API esta accesible desde `localhost:3000/api/` y cuenta con los siguientes Endpoints
 | Endpoint | Método | Parámetros | Descripción |
 |-|-|-|-|
-| `user/add` | POST | {<br /> username:`STRING`,<br /> firstname:`STRING`,<br /> lastname:`STRING`,<br /> password:`STRING`,<br /> money:`STRING` (valores permitidos: "usd", "eur", "ars") <br />} | Permite agregar un nuevo usuario |   
-| `user/login`  | POST | {<br /> username:`STRING`,  <br /> password:`STRING`<br />} | Login de usuario registrado |                                                  
+| `user/add` | POST | {<br /> username: `STRING`,<br /> firstname: `STRING`,<br /> lastname: `STRING`,<br /> password: `STRING`,<br /> money: `STRING` ("usd", "eur", "ars") <br />} | Permite agregar un nuevo usuario |   
+| `user/login`  | POST | {<br /> username: `STRING`,  <br /> password: `STRING`<br />} | Login de usuario registrado |                                                  
 | `coin/list-all` | GET | - | Lista todas las ciptomonedas disponibles |     
-| `coins/list-user`  | GET | order:`STRING` (opcional - valores permitidos: "asc", "desc"),<br /> top:`INTEGER` (opcional) | Lista las criptomonedas del usuario logueado |
-| `coin/add` | POST | {<br /> idcoin:`STRING` <br />} | Permite agregar cripto al usuario logueado |
-| `coin/remove` | DELETE | {<br /> idcoin:`STRING` <br />} | Permite remover cripto al usuario logueado |
+| `coins/list-user`  | GET | order: `STRING` (opcional - "asc", "desc"),<br /> top: `INTEGER` (opcional) | Lista las criptomonedas del usuario logueado |
+| `coin/add` | POST | {<br /> idcoin: `STRING` <br />} | Permite agregar cripto al usuario logueado |
+| `coin/remove` | DELETE | {<br /> idcoin: `STRING` <br />} | Permite remover cripto al usuario logueado |
 
 ___
 ### Test
 La API cuenta con un modulo de testing para chequear el correcto funcionamiento de los Endpoints. Para la ejecución del mismo, una vez iniciada la aplicación, se debe correr lo siguiente: <br />
 `npm test`
 ```
-Nota: El test creara un usuario de prueba con nombre 'wolox'. Si se ejecuta nuevamente el test, fallará en la creacion del mismo debido a que ya existe previamente.
+Nota: El test creara un usuario de prueba con nombre 'wolox'. 
+Si se ejecuta nuevamente el test, fallará en la creacion del mismo debido a que ya existe previamente.
 ```
