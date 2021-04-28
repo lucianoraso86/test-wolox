@@ -37,10 +37,10 @@ Una vez ejecutada, la API esta accesible desde `localhost:3000/api/` y cuenta co
 |-|-|-|-|
 | `user/add` | POST | {<br /> username: `STRING`,<br /> firstname: `STRING`,<br /> lastname: `STRING`,<br /> password: `STRING`,<br /> money: `STRING` ("usd", "eur", "ars") <br />} | Permite agregar un nuevo usuario |   
 | `user/login`  | POST | {<br /> username: `STRING`,  <br /> password: `STRING`<br />} | Login de usuario registrado |                                                  
-| `coin/list-all` | GET | - | Lista todas las ciptomonedas disponibles |     
-| `coins/list-user`  | GET | order: `STRING` (opcional - "asc", "desc"),<br /> top: `INTEGER` (opcional) | Lista las criptomonedas del usuario logueado |
-| `coin/add` | POST | {<br /> idcoin: `STRING` <br />} | Permite agregar criptomonedas al usuario logueado |
-| `coin/remove` | DELETE | {<br /> idcoin: `STRING` <br />} | Permite remover criptomonedas al usuario logueado |
+| `user/coins`  | GET | order: `STRING` (opcional - "asc", "desc"),<br /> top: `INTEGER` (opcional) | Lista las criptomonedas del usuario logueado |
+| `user/coins` | POST | {<br /> idcoin: `STRING` <br />} | Permite agregar criptomonedas al usuario logueado |
+| `user/coins` | DELETE | {<br /> idcoin: `STRING` <br />} | Permite remover criptomonedas al usuario logueado |
+| `coins` | GET | - | Lista todas las ciptomonedas disponibles |     
 
 ### Test
 

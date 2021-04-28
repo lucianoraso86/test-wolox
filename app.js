@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // routers
 app.use('/api/user', require('./src/router/user.router'));
-app.use('/api/coin', require('./src/router/coin.router'));
+app.use('/api/coins', require('./src/router/coin.router'));
 
 // star server
 app.listen(app.get('port'), () => {

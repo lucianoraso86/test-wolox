@@ -58,7 +58,7 @@ describe('Login', () => {
 describe('Listado de cryptos: ', () => {
     it('- Deberia listar todas las cryptos', (done) => {
         chai.request(url)
-            .get('/coin/list-all')
+            .get('/coins')
             .set({ 'token': token })
             .end(function(err, res) {
                 expect(res).to.have.status(200);
@@ -68,7 +68,7 @@ describe('Listado de cryptos: ', () => {
 
     it('- Deberia listar todas las cryptos del usuario', (done) => {
         chai.request(url)
-            .get('/coin/list-user')
+            .get('/user/coins')
             .set({ 'token': token })
             .end(function(err, res) {
                 expect(res).to.have.status(200);
@@ -82,7 +82,7 @@ describe('Listado de cryptos: ', () => {
 describe('Add/remove de cryptos: ', () => {
     it('- Deberia agregar una crypto al usuario: { "idcoin" : "bitcoin" } ', (done) => {
         chai.request(url)
-            .post('/coin/add')
+            .post('/user/coins')
             .set({ 'token': token })
             .send({ idcoin: "bitcoin" })
             .end(function(err, res) {
@@ -93,7 +93,7 @@ describe('Add/remove de cryptos: ', () => {
 
     it('- Deberia eliminar una crypto al usuario: { "idcoin" : "bitcoin" }', (done) => {
         chai.request(url)
-            .delete('/coin/remove')
+            .delete('/user/coins')
             .set({ 'token': token })
             .send({ idcoin: "bitcoin" })
             .end(function(err, res) {

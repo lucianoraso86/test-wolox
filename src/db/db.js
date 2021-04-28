@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize');
 
 // Models 
 const UserModel = require('../models/user.models');
-const CoinUserModel = require('../models/coin_user.model');
+const CoinUserModel = require('../models/coinuser.model');
 
 // Conexion a base de datos usando ORM
 const sequelize = new Sequelize(

@@ -3,7 +3,7 @@ const { util } = require('../services/util.service')
 const { CoinUser } = require('../db/db');
 
 
-const coinController = {
+const coinUserController = {
 
     // Metodo para listar -----------------------------------------------------
     async listAll(req, res) {
@@ -146,4 +146,4 @@ const coinController = {
 
 }
 
-module.exports = coinController;
+module.exports = coinUserController;
