@@ -48,7 +48,7 @@ describe('Login', () => {
             .post('/user/login')
             .send({ username: "wolox", password: "test1234" })
             .end(function(err, res) {
-                expect(res).to.have.status(403);
+                expect(res).to.have.status(400);
                 done();
             });
     });
@@ -80,7 +80,7 @@ describe('Listado de cryptos: ', () => {
 
 // Validacion de cryptos por usuario ------------------------------------------
 describe('Add/remove de cryptos: ', () => {
-    it('- Deberia agregar una crypto al usuario: { "coin" : "bitcoin" } ', (done) => {
+    it('- Deberia agregar una crypto al usuario: { "idcoin" : "bitcoin" } ', (done) => {
         chai.request(url)
             .post('/coin/add')
             .set({ 'token': token })
@@ -91,7 +91,7 @@ describe('Add/remove de cryptos: ', () => {
             });
     });
 
-    it('- Deberia eliminar una crypto al usuario: { "coin" : "bitcoin" }', (done) => {
+    it('- Deberia eliminar una crypto al usuario: { "idcoin" : "bitcoin" }', (done) => {
         chai.request(url)
             .delete('/coin/remove')
             .set({ 'token': token })

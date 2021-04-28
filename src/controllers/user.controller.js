@@ -63,10 +63,10 @@ const userController = {
                 return res.status(200).json({ 'username': username, 'token': getToken });
 
             } else {
-                return res.status(403).json({ error: 'Contraseña incorrecta' });
+                return res.status(400).json({ error: 'Contraseña incorrecta' });
             }
         } else {
-            return res.status(403).json({ error: 'Credenciales incorrectas' });
+            return res.status(400).json({ error: 'Credenciales incorrectas' });
         }
     },
 

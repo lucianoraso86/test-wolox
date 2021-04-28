@@ -80,7 +80,7 @@ const coinController = {
             return res.status(200).json(result);
 
         }).catch((err) => {
-            return res.status(403).json({ 'error': 'Error al obtener coins' + err });
+            return res.status(404).json({ 'error': 'Error al obtener coins' + err });
         });
 
     },
@@ -89,7 +89,7 @@ const coinController = {
     async add(req, res) {
 
         if (!req.body.idcoin) {
-            return res.status(403).json({ 'error': 'parametro no valido' });
+            return res.status(404).json({ 'error': 'parametro no valido' });
         }
 
         // valido que coin existente
@@ -110,7 +110,7 @@ const coinController = {
                 return res.status(200).json({ 'coinuser': result });
 
             } else {
-                return res.status(403).json({ 'error': 'relacion user-coin preexistente' });
+                return res.status(400).json({ 'error': 'relacion user-coin preexistente' });
             }
         } else {
             return res.status(404).json({ 'error': 'coin invalida' });
@@ -122,7 +122,7 @@ const coinController = {
     async remove(req, res) {
 
         if (!req.body.idcoin) {
-            return res.status(403).json({ 'error': 'parametro no valido' });
+            return res.status(404).json({ 'error': 'parametro no valido' });
         }
 
         // valido que coin existente

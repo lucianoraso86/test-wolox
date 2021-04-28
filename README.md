@@ -23,13 +23,13 @@ Finalmente para iniciar la API:<br />
 `npm start`
 ```
 Nota: Para iniciar la API en modo desarrollo (ante cambios reinicia el server), debe ejecutar:
-* npm run dev
+npm run dev
 ```
 ___
 ### Endpoints
 Una vez ejecutada, la API esta accesible desde `localhost:3000/api/` y cuenta con los siguientes Endpoints
 | Endpoint | Método | Parámetros | Descripción |
-|-|-|-|-|
+|-|:-|-|-|
 | `user/add` | POST | {<br /> username: `STRING`,<br /> firstname: `STRING`,<br /> lastname: `STRING`,<br /> password: `STRING`,<br /> money: `STRING` ("usd", "eur", "ars") <br />} | Permite agregar un nuevo usuario |   
 | `user/login`  | POST | {<br /> username: `STRING`,  <br /> password: `STRING`<br />} | Login de usuario registrado |                                                  
 | `coin/list-all` | GET | - | Lista todas las ciptomonedas disponibles |     
