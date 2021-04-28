@@ -65,6 +65,10 @@ describe('Listado de cryptos: ', () => {
                 done();
             });
     });
+});
+
+// Validacion de cryptos por usuario ------------------------------------------
+describe('List/add/remove de cryptos por usuario: ', () => {
 
     it('- Deberia listar todas las cryptos del usuario', (done) => {
         chai.request(url)
@@ -76,10 +80,6 @@ describe('Listado de cryptos: ', () => {
             });
     });
 
-});
-
-// Validacion de cryptos por usuario ------------------------------------------
-describe('Add/remove de cryptos: ', () => {
     it('- Deberia agregar una crypto al usuario: { "idcoin" : "bitcoin" } ', (done) => {
         chai.request(url)
             .post('/user/coins')
