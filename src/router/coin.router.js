@@ -4,6 +4,7 @@ const router = Router();
 const verifyToken = require('../middleware/validate-token');
 const coinController = require('../controllers/coin.controller');
 
+
 // lista todas las cyptos - valida token
 router.get('/list-all', verifyToken, async(req, res) => {
     coinController.listAll(req, res);

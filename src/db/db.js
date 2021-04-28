@@ -14,15 +14,13 @@ const sequelize = new Sequelize(
         logging: false
     });
 
-
 const User = UserModel(sequelize, Sequelize);
 const CoinUser = CoinUserModel(sequelize, Sequelize);
 
 // Sincronizo las tablas, si no existe la creo
 sequelize.sync({ force: false })
-    .then(() => {
-        console.log("- db sincronizada exitosamente");
-    })
+    .then(() => console.log("- db sincronizada exitosamente"))
+    .catch((err) => console.log("- ERROR al iniciar db: " + err))
 
 
 module.exports = {

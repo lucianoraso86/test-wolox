@@ -1,6 +1,6 @@
 const validate = {
 
-    // validaciones al crear un usuario
+    // validaciones al crear un usuario ---------------------------------------
     add(data) {
 
         if (!data.firstname || !data.lastname || !data.username || !data.password || !data.money) {
@@ -21,17 +21,20 @@ const validate = {
 
     },
 
-    // validaciones al login
+    // validaciones al login --------------------------------------------------
     login(data) {
+        if (!data.username || !data.password) {
+            return { 'status': false, 'info': 'campos incompletos' };
+        }
 
-        //faltan validaciones
+        return { 'status': true, 'info': 'ok' };
     },
 
 }
 
 const util = {
 
-
+    // orden de array ---------------------------------------------------------
     dynamicSort(money, order) {
         return function(a, b) {
             let result = (a.current_price[money] < b.current_price[money]) ? -1 : (a.current_price[money] > b.current_price[money]) ? 1 : 0;
@@ -39,6 +42,7 @@ const util = {
         }
     },
 
+    // limita cantidad de elementos de array ----------------------------------
     limitResult(result, limit) {
 
         if (result.length > limit) {

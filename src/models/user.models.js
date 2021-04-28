@@ -1,5 +1,6 @@
 const { DataTypes } = require("sequelize");
 
+// model para tabla users
 module.exports = (sequelize, type) => {
     return sequelize.define('users', {
         id: {

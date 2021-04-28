@@ -49,7 +49,7 @@ const coinController = {
         // busco por cada item los datos de coins 
         let promises = [];
         userCoinData.forEach(async(item) => {
-            promises.push(coinService.getCoin(item.id_coin));
+            promises.push(coinService.getCoinPromise(item.id_coin));
         });
 
         // Espero que finalicen todas las peticiones y armo la respuesta
@@ -88,8 +88,13 @@ const coinController = {
     // Metodo para agregar crypto al usuario autenticado ----------------------
     async add(req, res) {
 
+        if (!req.body.idcoin) {
+            return res.status(403).json({ 'error': 'parametro no valido' });
+        }
+
         // valido que coin existente
-        const dataCoin = await coinService.getCoin(req.body.coin);
+        const dataCoin = await coinService.getCoin(req.body.idcoin);
+
         if (dataCoin.id) {
 
             let coinUserData = {
@@ -108,7 +113,7 @@ const coinController = {
                 return res.status(403).json({ 'error': 'relacion user-coin preexistente' });
             }
         } else {
-            return res.status(403).json({ 'error': 'coin invalida' });
+            return res.status(404).json({ 'error': 'coin invalida' });
         }
 
     },
@@ -116,8 +121,12 @@ const coinController = {
     // Metodo para remover crypto al usuario autenticado ----------------------
     async remove(req, res) {
 
+        if (!req.body.idcoin) {
+            return res.status(403).json({ 'error': 'parametro no valido' });
+        }
+
         // valido que coin existente
-        const dataCoin = await coinService.getCoin(req.body.coin);
+        const dataCoin = await coinService.getCoin(req.body.idcoin);
         if (dataCoin.id) {
 
             let coinUserData = {
@@ -130,7 +139,7 @@ const coinController = {
             return res.status(200).json({ 'relaciones eliminadas': result });
 
         } else {
-            return res.status(403).json({ 'error': 'coin invalida' });
+            return res.status(404).json({ 'error': 'coin invalida' });
         }
 
     }

@@ -84,7 +84,7 @@ describe('Add/remove de cryptos: ', () => {
         chai.request(url)
             .post('/coin/add')
             .set({ 'token': token })
-            .send({ coin: "bitcoin" })
+            .send({ idcoin: "bitcoin" })
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done();
@@ -95,7 +95,7 @@ describe('Add/remove de cryptos: ', () => {
         chai.request(url)
             .delete('/coin/remove')
             .set({ 'token': token })
-            .send({ coin: "bitcoin" })
+            .send({ idcoin: "bitcoin" })
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done();
