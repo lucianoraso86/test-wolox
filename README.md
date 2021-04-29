@@ -1,6 +1,6 @@
 # Test Wolox - Cryptocurrencies Monitor
 
-Aplicación desarrolla en NodeJS con base de datos en MySql, que permite el login y registro de usuarios, obtener el listado de criptomonedas y su cotizacion, asi como tambien agregar o eliminar criptomonedas por usuario para su seguimiento. Utiliza para ello la api de CoinGecko.
+Aplicación desarrolla en NodeJS con base de datos en MySql, que permite el login y registro de usuarios, obtener el listado de criptomonedas y su cotizacion, asi como tambien agregar o eliminar criptomonedas por usuario para su seguimiento. Utiliza para ello la API de CoinGecko.
 
 ### Requerimientos Previos
 
@@ -16,9 +16,9 @@ Luego ingresar al directorio de la API e instalar las dependencias:<br />
 `cd test-wolox`<br />
 `npm install`
 
-Para la base de datos, una vez iniciado el servicio de MySql, se debe crear un esquema con el nombre `test-wolox` que es el utilizado por la API. No es necesaria la creacion de tablas, las mismas se crean al iniciar la aplicación. Los parametros de conexión son los siguientes:
+Para la base de datos, una vez iniciado el servicio de MySql, se debe crear un esquema con el nombre `testwolox` que es el utilizado por la API. No es necesaria la creacion de tablas, las mismas se crean al iniciar la aplicación. Los parametros de conexión son los siguientes:
 ```
-DB_NAME = test-wolox
+DB_NAME = testwolox
 DB_HOST = localhost
 DB_USERNAME = root 
 DB_PASSWORD =
